@@ -38,8 +38,12 @@ namespace PMToolMapperAdminPanel.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                return View(userLogin);
+            }
 
-            return View(userLogin);
+
         }
 
         // GET: UserManage/Create

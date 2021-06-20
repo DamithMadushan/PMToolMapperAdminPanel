@@ -1,0 +1,13 @@
+﻿.adminButtons {
+    padding-top:6%;
+    border: medium;
+    border-color: darkblue;
+    background-color: cornflowerblue;
+    min-height:200px;
+    min-width:400px;
+    margin:10px;
+    text-align:center;
+    font:bold;
+    font-size:25pt;
+    cursor:pointer;
+}
