@@ -18,7 +18,7 @@
 
                     var token = resultData.token;
 
-                    sessionStorage.setItem("token", token);
+                    sessionStorage.setItem("token", JSON.stringify(token));
 
                     window.location.href = "/Home";
 

@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Add PM Tool";
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link href="~/css/AddPMTool.css" rel="stylesheet" />
+
+<div class="text-center col-lg-12">
+    <h1 class="display-4">Add PM Tool</h1>
+</div>
+
+<div class="col-lg-12">
+    <div class="col-lg-3">
+        <label for="toolname">PM Tool Name</label>
+    </div>
+
+    <div class="col-lg-4">
+        <input type="text" class="form-control" id="toolname">
+    </div>
+
+</div>
+
+<br />
+<br />
+
+<div class="col-lg-12">
+    <div class="col-lg-3">
+
+    </div>
+
+    <div class="col-lg-3">
+        <button id="addtool" class="btn btn-success">Save</button>
+    </div>
+</div>
+
+<div class="alert alert-success col-lg-3" role="alert" id="successmsg" style="margin-top:10px;margin-left:25px;">
+    Tool successfully added!
+</div>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/AddPMTool.js"></script>

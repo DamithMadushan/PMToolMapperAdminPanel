@@ -1,10 +1,14 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/PMToolMapperAdminPanel",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:9040",
-      "sslPort": 0
+      "sslPort": 44305
     }
   },
   "profiles": {
@@ -18,10 +22,10 @@
     "PMToolMapperAdminPanel": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

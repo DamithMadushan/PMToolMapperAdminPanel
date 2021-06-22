@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,26 +37,30 @@ namespace PMToolMapperAdminPanel
             services.AddDbContext<PMTDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("PMTDBConnection")));
 
-            services.AddAuthentication(options =>
+
+            var tokenKey = "7617F2563E5F6A751BAD1BC59E932";
+            var key = Encoding.ASCII.GetBytes(tokenKey);
+
+            services.AddAuthentication(x =>
             {
-                options.DefaultAuthenticateScheme = "JwtBearer";
-                options.DefaultChallengeScheme = "JwtBearer";
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer("JwtBearer", jwtBearerOptions =>
+            .AddJwtBearer(x =>
             {
-                jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("7617F2563E5F6A751BAD1BC59E932")),
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    //ValidIssuer = "The name of the issuer",
-                    ValidateAudience = false,
-                    //ValidAudience = "The name of the audience",
-                    ValidateLifetime = true, //validate the expiration and not before values in the token
-                    ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
+                    ValidateAudience = false
                 };
             });
+
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,6 +73,9 @@ namespace PMToolMapperAdminPanel
             {
                 app.UseExceptionHandler("/Login/Error");
             }
+
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

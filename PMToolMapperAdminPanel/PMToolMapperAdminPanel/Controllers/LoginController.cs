@@ -34,7 +34,7 @@ namespace PMToolMapperAdminPanel.Controllers
         {
             HttpContext.Session.Clear();
 
-            return Json(new { status = true }); ;
+            return Json(new { status = true }); 
         }
 
 
@@ -94,20 +94,22 @@ namespace PMToolMapperAdminPanel.Controllers
 
         private string GenerateToken(string username)
         {
-            var claims = new Claim[]
+            string tokenKey = "7617F2563E5F6A751BAD1BC59E932";
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(tokenKey);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-            new Claim(ClaimTypes.Name, username),
-            new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
-            new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddDays(1)).ToUnixTimeSeconds().ToString()),
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, username)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature)
             };
-
-            var token = new JwtSecurityToken(
-                new JwtHeader(new SigningCredentials(
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret Key You Devise")),
-                                             SecurityAlgorithms.HmacSha256)),
-                new JwtPayload(claims));
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
