@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +10,13 @@ using PMToolMapperAdminPanel.Models.DBModels;
 
 namespace PMToolMapperAdminPanel.Controllers
 {
-    public class PMToolController : Controller
+    public class ToolFeaturesController : Controller
     {
         private readonly ILogger<PMToolController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly PMTDBContext _context;
 
-        public PMToolController(ILogger<PMToolController> logger, IHttpContextAccessor httpContextAccessor, PMTDBContext context)
+        public ToolFeaturesController(ILogger<PMToolController> logger, IHttpContextAccessor httpContextAccessor, PMTDBContext context)
         {
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
@@ -42,18 +41,18 @@ namespace PMToolMapperAdminPanel.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> addTool(string toolname)
+        public async Task<IActionResult> addFeature(string featurename)
         {
 
-            PMTool pMTool = new PMTool
+            AllFeatures allFeatures = new AllFeatures
             {
-                ToolName =toolname
+                 FeatureName = featurename
             };
 
-            _context.Add(pMTool);
+            _context.Add(allFeatures);
             await _context.SaveChangesAsync();
 
-            if (pMTool.ToolId > 0)
+            if (allFeatures.FeatureId > 0)
             {
                 return Json(new { IsValid = true });
             }
@@ -67,19 +66,20 @@ namespace PMToolMapperAdminPanel.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> getTools()
+        public async Task<IActionResult> getFeatures()
         {
 
-            var pmtools = _context.pMTools.ToList();
+            var Features = _context.allFeatures.ToList();
 
 
-            return Json(new { IsValid = true, tools = pmtools });
+            return Json(new { IsValid = true, features = Features });
 
         }
     }
 
-    public class Tool { 
-    
-        public string toolname { get; set; }
+    public class Features
+    {
+
+        public string featurename { get; set; }
     }
 }

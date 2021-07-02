@@ -4,21 +4,21 @@
 
     $("#successmsg").hide();
 
-    getPMTools();
+    getFeatures();
 
 
-    $("#addtool").click(function () {
+    $("#addFeature").click(function () {
 
         $("#successmsg").hide();
 
-        var toolName = $('#toolname').val();
+        var featureName = $('#featurename').val();
 
 
         $.ajax({
             type: 'POST',
-            url: '/PMTool/addTool',
+            url: '/ToolFeatures/addFeature',
             headers: { "Authorization": 'Bearer ' + JSON.parse(token) },
-            data: { toolname: toolName },
+            data: { featurename: featureName },
             success: function (resultData) {
 
                 if (resultData.isValid) {
@@ -26,12 +26,14 @@
                     $("#successmsg").show();
 
 
-                    getPMTools();
+                    getFeatures();
+
 
                     setTimeout(function () {
                         $("#successmsg").hide();
-                        $("toolname").val("");
+                        $("featurename").val("");
                     }, 2000);
+
 
                 } else {
 
@@ -46,25 +48,28 @@
 
 
 
-    function getPMTools() {
+    function getFeatures() {
 
         $.ajax({
             type: 'POST',
-            url: '/PMTool/getTools',
+            url: '/ToolFeatures/getFeatures',
             headers: { "Authorization": 'Bearer ' + JSON.parse(token) },
             success: function (resultData) {
 
-                $("#pmtoolsboby").html("");
+                $("#Featureboby").html("");
 
                 var body;
-                var toolnames = resultData.tools;
+                var featurenames = resultData.features;
 
-                $.each(toolnames, function (k, v) {
-                    body += "<tr><td>" + v.toolName + "</tr></td>";
+                $.each(featurenames, function (k, v) {
+                    body += "<tr><td>" + v.featureName + "</tr></td>";
                 });
 
 
-                $("#pmtoolsboby").html(body);
+                $("#Featureboby").html(body);
+
+
+
 
             }
         });

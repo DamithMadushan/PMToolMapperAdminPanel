@@ -1,13 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Add PM Tool";
+    ViewData["Title"] = "Add Features";
 }
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-<link href="~/css/AddPMTool.css" rel="stylesheet" />
+
 
 <div class="text-center col-lg-12">
-    <h1 class="display-4">Add PM Tool</h1>
+    <h1 class="display-4">Add Features</h1>
 </div>
 
 <div class="col-lg-12 row" style="margin-top:70px;">
@@ -19,11 +19,11 @@
 
         <div class="col-lg-12">
             <div class="col-lg-4">
-                <label for="toolname">PM Tool Name</label>
+                <label for="toolname">Feature Name</label>
             </div>
 
             <div class="col-lg-4">
-                <input type="text" class="form-control" id="toolname">
+                <input type="text" class="form-control" id="featurename">
             </div>
 
         </div>
@@ -37,12 +37,12 @@
             </div>
 
             <div class="col-lg-3">
-                <button id="addtool" class="btn btn-success">Add</button>
+                <button id="addFeature" class="btn btn-success">Add</button>
             </div>
         </div>
 
         <div class="alert alert-success col-lg-3" role="alert" id="successmsg" style="margin-top:10px;margin-left:25px;">
-            Tool successfully added!
+            Feature successfully added!
         </div>
 
 
@@ -58,13 +58,13 @@
             <thead class="thead-dark">
                 <tr> 
 
-                <th>PM Tool Name</th>
+                    <th>Feature Name</th>
                 
                 </tr>
 
             </thead>
 
-            <tbody id="pmtoolsboby">
+            <tbody id="Featureboby">
 
 
 
@@ -85,4 +85,4 @@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/AddPMTool.js"></script>
+    <script src="~/js/AddFeatures.js"></script>

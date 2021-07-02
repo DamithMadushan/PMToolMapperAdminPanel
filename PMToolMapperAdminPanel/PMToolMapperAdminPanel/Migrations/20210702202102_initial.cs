@@ -3,10 +3,38 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PMToolMapperAdminPanel.Migrations
 {
-    public partial class Second : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AllFeatures",
+                columns: table => new
+                {
+                    FeatureId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FeatureName = table.Column<string>(type: "nvarchar(150)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AllFeatures", x => x.FeatureId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MappingHistoryDetail",
+                columns: table => new
+                {
+                    DetailId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MappingId = table.Column<int>(type: "int", nullable: false),
+                    FeatureId = table.Column<int>(type: "int", nullable: false),
+                    MappingStatus = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MappingHistoryDetail", x => x.DetailId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "PMTool",
                 columns: table => new
@@ -142,28 +170,6 @@ namespace PMToolMapperAdminPanel.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "MappingHistoryDetail",
-                columns: table => new
-                {
-                    DetailId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MappingId = table.Column<int>(type: "int", nullable: false),
-                    FeatureId = table.Column<int>(type: "int", nullable: false),
-                    ToolFeaturesId = table.Column<int>(type: "int", nullable: true),
-                    MappingStatus = table.Column<string>(type: "nvarchar(50)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MappingHistoryDetail", x => x.DetailId);
-                    table.ForeignKey(
-                        name: "FK_MappingHistoryDetail_ToolFeatures_ToolFeaturesId",
-                        column: x => x.ToolFeaturesId,
-                        principalTable: "ToolFeatures",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_MappingHistory_PMToolToolId",
                 table: "MappingHistory",
@@ -173,11 +179,6 @@ namespace PMToolMapperAdminPanel.Migrations
                 name: "IX_MappingHistory_UserLoginUserId",
                 table: "MappingHistory",
                 column: "UserLoginUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MappingHistoryDetail_ToolFeaturesId",
-                table: "MappingHistoryDetail",
-                column: "ToolFeaturesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MigrationHistory_PMToolToolId",
@@ -202,6 +203,9 @@ namespace PMToolMapperAdminPanel.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AllFeatures");
+
             migrationBuilder.DropTable(
                 name: "MappingHistory");
 

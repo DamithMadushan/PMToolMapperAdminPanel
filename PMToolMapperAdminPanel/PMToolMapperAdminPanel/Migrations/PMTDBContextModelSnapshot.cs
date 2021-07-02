@@ -19,6 +19,21 @@ namespace PMToolMapperAdminPanel.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.AllFeatures", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FeatureName")
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("FeatureId");
+
+                    b.ToTable("AllFeatures");
+                });
+
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.MappingHistory", b =>
                 {
                     b.Property<int>("MappingId")

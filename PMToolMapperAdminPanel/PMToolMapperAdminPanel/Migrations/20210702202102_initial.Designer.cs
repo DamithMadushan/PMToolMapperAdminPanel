@@ -10,8 +10,8 @@ using PMToolMapperAdminPanel.Models.DBModels;
 namespace PMToolMapperAdminPanel.Migrations
 {
     [DbContext(typeof(PMTDBContext))]
-    [Migration("20210619130525_Second")]
-    partial class Second
+    [Migration("20210702202102_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace PMToolMapperAdminPanel.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.AllFeatures", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FeatureName")
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("FeatureId");
+
+                    b.ToTable("AllFeatures");
+                });
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.MappingHistory", b =>
                 {
@@ -71,12 +86,7 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.Property<string>("MappingStatus")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("ToolFeaturesId")
-                        .HasColumnType("int");
-
                     b.HasKey("DetailId");
-
-                    b.HasIndex("ToolFeaturesId");
 
                     b.ToTable("MappingHistoryDetail");
                 });
@@ -225,15 +235,6 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.Navigation("PMTool");
 
                     b.Navigation("UserLogin");
-                });
-
-            modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.MappingHistoryDetail", b =>
-                {
-                    b.HasOne("PMToolMapperAdminPanel.Models.DBModels.ToolFeatures", "ToolFeatures")
-                        .WithMany()
-                        .HasForeignKey("ToolFeaturesId");
-
-                    b.Navigation("ToolFeatures");
                 });
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.MigrationHistory", b =>
