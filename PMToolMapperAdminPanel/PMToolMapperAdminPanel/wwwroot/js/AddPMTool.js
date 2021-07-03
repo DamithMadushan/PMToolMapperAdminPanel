@@ -30,7 +30,7 @@
 
                     setTimeout(function () {
                         $("#successmsg").hide();
-                        $("toolname").val("");
+                        $("#toolname").val("");
                     }, 2000);
 
                 } else {

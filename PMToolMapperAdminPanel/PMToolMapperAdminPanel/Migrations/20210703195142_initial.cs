@@ -170,6 +170,30 @@ namespace PMToolMapperAdminPanel.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "PMTool",
+                columns: new[] { "ToolId", "ToolName" },
+                values: new object[,]
+                {
+                    { 1, "TFS" },
+                    { 2, "Jira" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ToolFeatureCategories",
+                columns: new[] { "FeatureCategoryId", "FeatureCategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Common basic features" },
+                    { 2, "Common advanced features" },
+                    { 3, "Extra features of destination tool" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserLogin",
+                columns: new[] { "UserId", "Date", "Paswword", "UserFullName", "UserName", "UserRole" },
+                values: new object[] { 1, new DateTime(2021, 7, 4, 1, 21, 41, 913, DateTimeKind.Local).AddTicks(2467), "1234$", "Sam Perera", "Admin", "Admin" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_MappingHistory_PMToolToolId",
                 table: "MappingHistory",

@@ -34,12 +34,56 @@ namespace PMToolMapperAdminPanel.Models.DBModels
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserLogin>();
+
+            modelBuilder.Entity<UserLogin>().HasData(
+                new UserLogin { 
+                       UserId = 1,
+                       UserFullName = "Sam Perera",
+                       UserName = "Admin",
+                       UserRole = "Admin",
+                       Paswword = "1234$",
+                       Date = DateTime.Now
+                });
+
+
             modelBuilder.Entity<MappingHistory>();
             modelBuilder.Entity<MappingHistoryDetail>();
             modelBuilder.Entity<MigrationHistory>();
-            modelBuilder.Entity<PMTool>();
-            modelBuilder.Entity<ToolFeatureCategories>();
+
+
+            modelBuilder.Entity<PMTool>().HasData(
+                
+                new PMTool
+                {
+                    ToolId = 1,
+                    ToolName = "TFS"
+                },
+                new PMTool
+                {
+                    ToolId = 2,
+                    ToolName = "Jira"
+                });
+
+
+            modelBuilder.Entity<ToolFeatureCategories>().HasData(
+                
+                new ToolFeatureCategories
+                {
+                    FeatureCategoryId = 1,
+                    FeatureCategoryName = "Common basic features"
+                },
+                new ToolFeatureCategories
+                {
+                    FeatureCategoryId = 2,
+                    FeatureCategoryName = "Common advanced features"
+                },
+                new ToolFeatureCategories
+                {
+                    FeatureCategoryId = 3,
+                    FeatureCategoryName = "Extra features of destination tool"
+                });
+
+
             modelBuilder.Entity<ToolFeatures>();
             modelBuilder.Entity<AllFeatures>();
         }

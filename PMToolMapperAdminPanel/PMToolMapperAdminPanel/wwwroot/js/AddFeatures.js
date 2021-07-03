@@ -31,7 +31,7 @@
 
                     setTimeout(function () {
                         $("#successmsg").hide();
-                        $("featurename").val("");
+                        $("#featurename").val("");
                     }, 2000);
 
 

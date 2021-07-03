@@ -10,7 +10,7 @@ using PMToolMapperAdminPanel.Models.DBModels;
 namespace PMToolMapperAdminPanel.Migrations
 {
     [DbContext(typeof(PMTDBContext))]
-    [Migration("20210702202102_initial")]
+    [Migration("20210703195142_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -138,6 +138,18 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.HasKey("ToolId");
 
                     b.ToTable("PMTool");
+
+                    b.HasData(
+                        new
+                        {
+                            ToolId = 1,
+                            ToolName = "TFS"
+                        },
+                        new
+                        {
+                            ToolId = 2,
+                            ToolName = "Jira"
+                        });
                 });
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.ToolFeatureCategories", b =>
@@ -153,6 +165,23 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.HasKey("FeatureCategoryId");
 
                     b.ToTable("ToolFeatureCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            FeatureCategoryId = 1,
+                            FeatureCategoryName = "Common basic features"
+                        },
+                        new
+                        {
+                            FeatureCategoryId = 2,
+                            FeatureCategoryName = "Common advanced features"
+                        },
+                        new
+                        {
+                            FeatureCategoryId = 3,
+                            FeatureCategoryName = "Extra features of destination tool"
+                        });
                 });
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.ToolFeatures", b =>
@@ -220,6 +249,17 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("UserLogin");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Date = new DateTime(2021, 7, 4, 1, 21, 41, 913, DateTimeKind.Local).AddTicks(2467),
+                            Paswword = "1234$",
+                            UserFullName = "Sam Perera",
+                            UserName = "Admin",
+                            UserRole = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.MappingHistory", b =>
