@@ -13,4 +13,9 @@
 
     });
     
+    $(".setFeatures").click(function () {
+
+        window.location.href = "/SetFeatures";
+
+    });
 });

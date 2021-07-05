@@ -1,0 +1,177 @@
+﻿@{
+    ViewData["Title"] = "Set Tool Features";
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link href="~/css/AddPMTool.css" rel="stylesheet" />
+
+<nav class="navbar navbar-expand-sm bg-light">
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/Home">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link">/</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Set Tool Features</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<div class="text-center col-lg-12">
+    <h1 class="display-4">Set Tool Features</h1>
+</div>
+
+<div class="col-lg-12 row" style="margin-top:70px;">
+
+
+        <div class="col-lg-12 row">
+
+            <div class="col-lg-6">
+                <label for="toolname">PM Tool Name</label>
+            </div>
+
+            <div class="col-lg-6">
+                <select name="toolname" id="toolname" class="form-control">
+                    <option value="" disabled="disabled">--Select--</option>
+                </select>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-12 row" style="margin-top:30px;">
+
+            <div class="col-lg-6">
+                <label for="featurename">Feature Name</label>
+            </div>
+
+            <div class="col-lg-6">
+                <select name="featurename" id="featurename" class="form-control">
+                    <option value="" disabled="disabled">--Select--</option>
+                </select>
+            </div>
+
+
+        </div>
+
+
+        <div class="col-lg-12 row" style="margin-top:30px;">
+
+            <div class="col-lg-6">
+                <label for="featureCategory">Feature Category</label>
+            </div>
+
+            <div class="col-lg-6">
+                <select name="featureCategory" id="featureCategory" class="form-control">
+                    <option value="" disabled="disabled">--Select--</option>
+                </select>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="col-lg-12 row" style="margin-top:30px;">
+
+            <div class="col-lg-6">
+                <label for="featureapiurl">Api Url</label>
+            </div>
+
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="featureapiurl">
+            </div>
+
+
+        </div>
+
+
+
+        <div class="col-lg-12 row" style="margin-top:30px;">
+
+            <div class="col-lg-6">
+                <label for="toolstatus">Status</label>
+            </div>
+
+            <div class="col-lg-6">
+                <select name="toolname" id="toolname" class="form-control">
+                    <option value="" disabled="disabled">--Select--</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="col-lg-12 row" style="margin-top:30px;">
+
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-success" id="save">Save</button>
+
+            </div>
+
+            <div class="col-lg-6">
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+ 
+
+
+    <div class="col-lg-12" style="margin-top:50px;">
+
+        <table class="table">
+
+            <thead class="thead-dark">
+                <tr>
+
+                    <th>Id</th>
+                    <th>PM Tool Name</th>
+                    <th>Feature Name</th>
+                    <th>Feature Category</th>
+                    <th>Feature Url</th>
+                    <th>Feature Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="pmtoolFeaturesboby">
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/SetFeatures.js"></script>

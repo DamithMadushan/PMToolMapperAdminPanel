@@ -13,9 +13,7 @@ namespace PMToolMapperAdminPanel.Models.DBModels
 
 
         public int FeatureId { get; set; }
-
-        [Column(TypeName = "nvarchar(150)")]
-        public string FeatureName { get; set; }
+        public AllFeatures AllFeatures { get; set; }
 
 
         public int FeatureCategoryId { get; set; }
@@ -23,6 +21,10 @@ namespace PMToolMapperAdminPanel.Models.DBModels
 
         public int ToolId { get; set; }
         public PMTool PMTool { get; set; }
+
+        [Column(TypeName = "nvarchar(250)")]
+        public string FeatureUrl { get; set; }
+
 
         [Column(TypeName ="nvarchar(50)")]
         public string FeatureStatus { get; set; }

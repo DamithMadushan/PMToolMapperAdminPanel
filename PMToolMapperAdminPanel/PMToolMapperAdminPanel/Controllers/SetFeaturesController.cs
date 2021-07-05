@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +10,13 @@ using PMToolMapperAdminPanel.Models.DBModels;
 
 namespace PMToolMapperAdminPanel.Controllers
 {
-    public class PMToolController : Controller
+    public class SetFeaturesController : Controller
     {
         private readonly ILogger<PMToolController> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly PMTDBContext _context;
 
-        public PMToolController(ILogger<PMToolController> logger, IHttpContextAccessor httpContextAccessor, PMTDBContext context)
+        public SetFeaturesController(ILogger<PMToolController> logger, IHttpContextAccessor httpContextAccessor, PMTDBContext context)
         {
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
@@ -40,46 +39,44 @@ namespace PMToolMapperAdminPanel.Controllers
             }
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> addTool(string toolname)
-        {
-
-            PMTool pMTool = new PMTool
-            {
-                ToolName =toolname
-            };
-
-            _context.Add(pMTool);
-            await _context.SaveChangesAsync();
-
-            if (pMTool.ToolId > 0)
-            {
-                return Json(new { IsValid = true });
-            }
-            else
-            {
-                return Json(new { IsValid = false });
-            }
-
-        }
-
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> getTools()
         {
 
-            var pmtools = _context.pMTools.ToList();
+            var pmtools = _context.pMTools.ToList().OrderBy(x => x.ToolName);
 
 
             return Json(new { IsValid = true, tools = pmtools });
 
         }
-    }
 
-    public class Tool { 
-    
-        public string toolname { get; set; }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> getToolFeatureCategory()
+        {
+
+            var pmtoolcat = _context.toolFeatureCategories.ToList().OrderBy(x => x.FeatureCategoryName);
+
+
+            return Json(new { IsValid = true, Categories = pmtoolcat });
+
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> getToolFeatures()
+        {
+
+            var _features = _context.allFeatures.ToList().OrderBy(x => x.FeatureName);
+
+
+            return Json(new { IsValid = true, features = _features });
+
+        }
+
     }
 }

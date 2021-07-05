@@ -189,6 +189,9 @@ namespace PMToolMapperAdminPanel.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AllFeaturesFeatureId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
@@ -198,11 +201,11 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.Property<int>("FeatureId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FeatureName")
-                        .HasColumnType("nvarchar(150)");
-
                     b.Property<string>("FeatureStatus")
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FeatureUrl")
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int?>("PMToolToolId")
                         .HasColumnType("int");
@@ -214,6 +217,8 @@ namespace PMToolMapperAdminPanel.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AllFeaturesFeatureId");
 
                     b.HasIndex("PMToolToolId");
 
@@ -252,7 +257,7 @@ namespace PMToolMapperAdminPanel.Migrations
                         new
                         {
                             UserId = 1,
-                            Date = new DateTime(2021, 7, 4, 1, 21, 41, 913, DateTimeKind.Local).AddTicks(2467),
+                            Date = new DateTime(2021, 7, 6, 1, 38, 46, 118, DateTimeKind.Local).AddTicks(8887),
                             Paswword = "1234$",
                             UserFullName = "Sam Perera",
                             UserName = "Admin",
@@ -292,6 +297,10 @@ namespace PMToolMapperAdminPanel.Migrations
 
             modelBuilder.Entity("PMToolMapperAdminPanel.Models.DBModels.ToolFeatures", b =>
                 {
+                    b.HasOne("PMToolMapperAdminPanel.Models.DBModels.AllFeatures", "AllFeatures")
+                        .WithMany()
+                        .HasForeignKey("AllFeaturesFeatureId");
+
                     b.HasOne("PMToolMapperAdminPanel.Models.DBModels.PMTool", "PMTool")
                         .WithMany()
                         .HasForeignKey("PMToolToolId");
@@ -299,6 +308,8 @@ namespace PMToolMapperAdminPanel.Migrations
                     b.HasOne("PMToolMapperAdminPanel.Models.DBModels.ToolFeatureCategories", "ToolFeatureCategories")
                         .WithMany()
                         .HasForeignKey("ToolFeatureCategoriesFeatureCategoryId");
+
+                    b.Navigation("AllFeatures");
 
                     b.Navigation("PMTool");
 

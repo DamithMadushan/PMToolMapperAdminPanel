@@ -28,10 +28,10 @@
 
                     getFeatures();
 
+                    $("#featurename").val("");
 
                     setTimeout(function () {
                         $("#successmsg").hide();
-                        $("#featurename").val("");
                     }, 2000);
 
 

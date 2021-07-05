@@ -85,17 +85,24 @@ namespace PMToolMapperAdminPanel.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FeatureId = table.Column<int>(type: "int", nullable: false),
-                    FeatureName = table.Column<string>(type: "nvarchar(150)", nullable: true),
+                    AllFeaturesFeatureId = table.Column<int>(type: "int", nullable: true),
                     FeatureCategoryId = table.Column<int>(type: "int", nullable: false),
                     ToolFeatureCategoriesFeatureCategoryId = table.Column<int>(type: "int", nullable: true),
                     ToolId = table.Column<int>(type: "int", nullable: false),
                     PMToolToolId = table.Column<int>(type: "int", nullable: true),
+                    FeatureUrl = table.Column<string>(type: "nvarchar(250)", nullable: true),
                     FeatureStatus = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ToolFeatures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ToolFeatures_AllFeatures_AllFeaturesFeatureId",
+                        column: x => x.AllFeaturesFeatureId,
+                        principalTable: "AllFeatures",
+                        principalColumn: "FeatureId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ToolFeatures_PMTool_PMToolToolId",
                         column: x => x.PMToolToolId,
@@ -192,7 +199,7 @@ namespace PMToolMapperAdminPanel.Migrations
             migrationBuilder.InsertData(
                 table: "UserLogin",
                 columns: new[] { "UserId", "Date", "Paswword", "UserFullName", "UserName", "UserRole" },
-                values: new object[] { 1, new DateTime(2021, 7, 4, 1, 21, 41, 913, DateTimeKind.Local).AddTicks(2467), "1234$", "Sam Perera", "Admin", "Admin" });
+                values: new object[] { 1, new DateTime(2021, 7, 6, 1, 38, 46, 118, DateTimeKind.Local).AddTicks(8887), "1234$", "Sam Perera", "Admin", "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MappingHistory_PMToolToolId",
@@ -215,6 +222,11 @@ namespace PMToolMapperAdminPanel.Migrations
                 column: "UserLoginUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ToolFeatures_AllFeaturesFeatureId",
+                table: "ToolFeatures",
+                column: "AllFeaturesFeatureId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ToolFeatures_PMToolToolId",
                 table: "ToolFeatures",
                 column: "PMToolToolId");
@@ -227,9 +239,6 @@ namespace PMToolMapperAdminPanel.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "AllFeatures");
-
             migrationBuilder.DropTable(
                 name: "MappingHistory");
 
@@ -244,6 +253,9 @@ namespace PMToolMapperAdminPanel.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserLogin");
+
+            migrationBuilder.DropTable(
+                name: "AllFeatures");
 
             migrationBuilder.DropTable(
                 name: "PMTool");

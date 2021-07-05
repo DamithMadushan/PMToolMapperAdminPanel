@@ -28,9 +28,10 @@
 
                     getPMTools();
 
+                    $("#toolname").val("");
+
                     setTimeout(function () {
                         $("#successmsg").hide();
-                        $("#toolname").val("");
                     }, 2000);
 
                 } else {

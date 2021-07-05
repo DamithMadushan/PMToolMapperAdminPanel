@@ -27,7 +27,7 @@ namespace PMToolMapperAdminPanel.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("LoginStatus") == "Logged")
             {
                 _httpContextAccessor.HttpContext.Session.SetString("User_Name", HttpContext.Session.GetString("UserFullName").ToString());
 
@@ -35,7 +35,7 @@ namespace PMToolMapperAdminPanel.Controllers
             }
             else
             {
-                return BadRequest();
+                return RedirectToAction("Index", "Login");
             }
         }
 

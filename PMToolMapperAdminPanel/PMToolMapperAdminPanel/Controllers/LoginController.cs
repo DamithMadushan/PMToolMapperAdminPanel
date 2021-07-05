@@ -59,6 +59,7 @@ namespace PMToolMapperAdminPanel.Controllers
                         //set sessions
                         HttpContext.Session.SetString("UserFullName", userLogin.UserFullName);
                         HttpContext.Session.SetString("UserName", userLogin.UserName);
+                        HttpContext.Session.SetString("LoginStatus", "Logged");
 
 
                         return Json(new { IsValid = true, message = "", token = GenerateToken(userName) });
