@@ -78,5 +78,57 @@ namespace PMToolMapperAdminPanel.Controllers
 
         }
 
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> addToolFeatures(ToolFeatures toolFeatures)
+        {
+            toolFeatures.Date = DateTime.Now;
+
+            _context.Add(toolFeatures);
+            await _context.SaveChangesAsync();
+
+            if (toolFeatures.Id > 0)
+            {
+                return Json(new { IsValid = true });
+            }
+            else
+            {
+                return Json(new { IsValid = false });
+            }
+
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> getToolFeatureDetails()
+        {
+            var _toolFeatures = (from tf in _context.toolFeatures
+                                join af in _context.allFeatures on tf.FeatureId equals af.FeatureId
+                                join pmt in _context.pMTools on tf.ToolId equals pmt.ToolId
+                                join tc in _context.toolFeatureCategories on tf.FeatureCategoryId equals tc.FeatureCategoryId
+                                select new { 
+                                
+                                    tf.Id,
+                                    pmt.ToolName,
+                                    af.FeatureName,
+                                    tc.FeatureCategoryName,
+                                    tf.FeatureUrl,
+                                    tf.FeatureStatus
+                                
+                                }).OrderBy(x => x.ToolName).ThenBy(x => x.FeatureName).ToList();
+
+            if (_toolFeatures != null)
+            {
+                return Json(new { features = _toolFeatures });
+            }
+            else
+            {
+                return Json(new { features = "" });
+            }
+
+        }
+
     }
 }

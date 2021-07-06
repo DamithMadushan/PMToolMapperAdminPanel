@@ -11,20 +11,14 @@ namespace PMToolMapperAdminPanel.Models.DBModels
     {
         public int Id { get; set; }
 
-
         public int FeatureId { get; set; }
-        public AllFeatures AllFeatures { get; set; }
-
 
         public int FeatureCategoryId { get; set; }
-        public ToolFeatureCategories ToolFeatureCategories { get; set; }
-
+      
         public int ToolId { get; set; }
-        public PMTool PMTool { get; set; }
-
+     
         [Column(TypeName = "nvarchar(250)")]
         public string FeatureUrl { get; set; }
-
 
         [Column(TypeName ="nvarchar(50)")]
         public string FeatureStatus { get; set; }

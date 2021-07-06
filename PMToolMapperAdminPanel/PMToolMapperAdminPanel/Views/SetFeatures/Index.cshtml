@@ -34,113 +34,119 @@
 <div class="col-lg-12 row" style="margin-top:70px;">
 
 
-        <div class="col-lg-12 row">
+    <div class="col-lg-12 row">
 
-            <div class="col-lg-6">
-                <label for="toolname">PM Tool Name</label>
-            </div>
-
-            <div class="col-lg-6">
-                <select name="toolname" id="toolname" class="form-control">
-                    <option value="" disabled="disabled">--Select--</option>
-                </select>
-            </div>
-
-
+        <div class="col-lg-6">
+            <label for="toolname">PM Tool Name</label>
         </div>
 
-        <div class="col-lg-12 row" style="margin-top:30px;">
-
-            <div class="col-lg-6">
-                <label for="featurename">Feature Name</label>
-            </div>
-
-            <div class="col-lg-6">
-                <select name="featurename" id="featurename" class="form-control">
-                    <option value="" disabled="disabled">--Select--</option>
-                </select>
-            </div>
-
-
+        <div class="col-lg-6">
+            <select name="toolname" id="toolname" class="form-control">
+                <option value="" disabled="disabled">--Select--</option>
+            </select>
         </div>
 
 
-        <div class="col-lg-12 row" style="margin-top:30px;">
+    </div>
 
-            <div class="col-lg-6">
-                <label for="featureCategory">Feature Category</label>
-            </div>
+    <div class="col-lg-12 row" style="margin-top:30px;">
 
-            <div class="col-lg-6">
-                <select name="featureCategory" id="featureCategory" class="form-control">
-                    <option value="" disabled="disabled">--Select--</option>
-                </select>
-            </div>
+        <div class="col-lg-6">
+            <label for="featurename">Feature Name</label>
+        </div>
 
-
+        <div class="col-lg-6">
+            <select name="featurename" id="featurename" class="form-control">
+                <option value="" disabled="disabled">--Select--</option>
+            </select>
         </div>
 
 
+    </div>
 
 
-        <div class="col-lg-12 row" style="margin-top:30px;">
+    <div class="col-lg-12 row" style="margin-top:30px;">
 
-            <div class="col-lg-6">
-                <label for="featureapiurl">Api Url</label>
-            </div>
+        <div class="col-lg-6">
+            <label for="featureCategory">Feature Category</label>
+        </div>
 
-            <div class="col-lg-6">
-                <input type="text" class="form-control" id="featureapiurl">
-            </div>
-
-
+        <div class="col-lg-6">
+            <select name="featureCategory" id="featureCategory" class="form-control">
+                <option value="" disabled="disabled">--Select--</option>
+            </select>
         </div>
 
 
-
-        <div class="col-lg-12 row" style="margin-top:30px;">
-
-            <div class="col-lg-6">
-                <label for="toolstatus">Status</label>
-            </div>
-
-            <div class="col-lg-6">
-                <select name="toolname" id="toolname" class="form-control">
-                    <option value="" disabled="disabled">--Select--</option>
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                </select>
-            </div>
+    </div>
 
 
 
 
+    <div class="col-lg-12 row" style="margin-top:30px;">
 
+        <div class="col-lg-6">
+            <label for="featureapiurl">Api Url</label>
+        </div>
+
+        <div class="col-lg-6">
+            <input type="text" class="form-control" id="featureapiurl">
         </div>
 
 
-        <div class="col-lg-12 row" style="margin-top:30px;">
-
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-success" id="save">Save</button>
-
-            </div>
-
-            <div class="col-lg-6">
-            </div>
+    </div>
 
 
 
+    <div class="col-lg-12 row" style="margin-top:30px;">
 
+        <div class="col-lg-6">
+            <label for="toolstatus">Status</label>
+        </div>
 
+        <div class="col-lg-6">
+            <select name="toolstatus" id="toolstatus" class="form-control">
+                <option value="" disabled="disabled">--Select--</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
         </div>
 
 
 
- 
 
 
-    <div class="col-lg-12" style="margin-top:50px;">
+    </div>
+
+
+    <div class="alert alert-success col-lg-12" role="alert" id="successmsg" style="margin-top:10px;display:none;">
+        Tool feature successfully saved!
+    </div>
+
+
+    <div class="col-lg-12 row" style="margin-top:30px;">
+
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-success" id="save">Save</button>
+
+        </div>
+
+        <div class="col-lg-6">
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="col-lg-12" style="margin-top:50px;float:left">
 
         <table class="table">
 
