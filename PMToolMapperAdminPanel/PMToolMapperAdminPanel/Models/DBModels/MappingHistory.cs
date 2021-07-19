@@ -15,10 +15,8 @@ namespace PMToolMapperAdminPanel.Models.DBModels
         public int OldToolId { get; set; }
 
         public int NewToolId { get; set; }
-        public PMTool PMTool { get; set; }
 
         public int UserId { get; set; }
-        public UserLogin  UserLogin { get; set; }
 
         public DateTime Date { get; set; }
     }
