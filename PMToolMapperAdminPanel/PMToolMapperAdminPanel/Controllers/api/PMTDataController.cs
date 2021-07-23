@@ -27,7 +27,8 @@ namespace PMToolMapperAdminPanel.Controllers.api
         }
 
 
-        [HttpGet("{apiname}", Name = "getTools")]
+        [HttpGet("{tools}", Name = "getTools")]
+        [Route("getTools")]
         public IActionResult getTools()
         {
 
@@ -39,36 +40,39 @@ namespace PMToolMapperAdminPanel.Controllers.api
 
 
 
-        [HttpGet]
-        public ActionResult getAllFeatures()
+        [HttpGet("{AllFeatures}", Name = "getAllFeatures")]
+        [Route("getAllFeatures")]
+        public IActionResult getAllFeatures()
         {
 
             var allfeatures = _context.allFeatures.ToArray().OrderBy(x => x.FeatureId);
 
-            return new JsonResult(new { _allfeatures = allfeatures });
+            return new JsonResult(allfeatures);
 
         }
 
 
 
-        [HttpGet]
-        public ActionResult getToolFeatureCategories()
+        [HttpGet("{ToolFeatureCategories}", Name = "getToolFeatureCategories")]
+        [Route("getToolFeatureCategories")]
+        public IActionResult getToolFeatureCategories()
         {
 
             var featureCategories = _context.toolFeatureCategories.ToArray().OrderBy(x => x.FeatureCategoryId);
 
-            return new JsonResult(new { _featureCategories = featureCategories });
+            return new JsonResult(featureCategories);
 
         }
 
 
-        [HttpGet]
-        public ActionResult getToolFeatures()
+        [HttpGet("{ToolFeatures}", Name = "getToolFeatures")]
+        [Route("getToolFeatures")]
+        public IActionResult getToolFeatures()
         {
 
             var toolFeatures = _context.toolFeatures.ToArray().OrderBy(x => x.Id);
 
-            return new JsonResult(new { _toolFeatures = toolFeatures });
+            return new JsonResult(toolFeatures);
 
         }
 
