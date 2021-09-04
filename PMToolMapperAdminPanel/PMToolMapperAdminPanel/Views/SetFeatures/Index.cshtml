@@ -83,7 +83,7 @@
 
 
 
-    <div class="col-lg-12 row" style="margin-top:30px;">
+    <div class="col-lg-12 row" style="margin-top:30px;display:none;">
 
         <div class="col-lg-6">
             <label for="featureapiurl">Api Url</label>
@@ -148,31 +148,33 @@
 
     <div class="col-lg-12" style="margin-top:50px;float:left">
 
-        <table class="table">
+        <div style="overflow:scroll; height:500px;">
+            <table class="table">
 
-            <thead class="thead-dark">
-                <tr>
+                <thead class="thead-dark">
+                    <tr>
 
-                    <th>Id</th>
-                    <th>PM Tool Name</th>
-                    <th>Feature Name</th>
-                    <th>Feature Category</th>
-                    <th>Feature Url</th>
-                    <th>Feature Status</th>
+                        <th style="display:none;">Id</th>
+                        <th>PM Tool Name</th>
+                        <th>Feature Name</th>
+                        <th>Feature Category</th>
+                        @*<th style="display:none;">Feature Url</th>*@
+                        <th>Feature Status</th>
 
-                </tr>
+                    </tr>
 
-            </thead>
+                </thead>
 
-            <tbody id="pmtoolFeaturesboby">
-            </tbody>
+                <tbody id="pmtoolFeaturesboby">
+                </tbody>
 
-        </table>
+            </table>
+
+        </div>
+        </div>
+
 
     </div>
-
-
-</div>
 
 
 

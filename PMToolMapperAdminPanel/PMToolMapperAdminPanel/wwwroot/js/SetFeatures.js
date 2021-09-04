@@ -172,11 +172,11 @@
                 var toolnames = resultData.features;
 
                 $.each(toolnames, function (k, v) {
-                    body += "<tr><td>" + v.id + "</td>";
+                    body += "<tr><td style='display: none'>" + v.id + "</td>";
                     body += "<td>" + v.toolName + "</td>";
                     body += "<td>" + v.featureName + "</td>";
                     body += "<td>" + v.featureCategoryName + "</td>";
-                    body += "<td>" + v.featureUrl + "</td>";
+                    //body += "<td>" + v.featureUrl + "</td>";
                     body += "<td>" + v.featureStatus + "</td></tr>";
                 });
 
